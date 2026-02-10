@@ -3,41 +3,77 @@ function showPlace() {
     const resultDiv = document.getElementById('result');
     
     if (!place) {
-        resultDiv.innerHTML = '<p>Please enter or select a place from the list.</p>';
-        return;
-    }
+        "Kisumu": {
+            description: "Kisumu is a lakeside city on Lake Victoria, known for its fishing and wildlife.",
+            images: [
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1500516659405-41601c0d9c21?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1504681869696-d977e3a34b2d?w=1000&auto=format&fit=crop&q=60"
+            ]
     
-    if (!placeData[place]) {
-        resultDiv.innerHTML = '<p style="color: red;">"' + place + '" is not listed in our database. Please select from the available options.</p>';
-        return;
+        "Kenya National Museum": {
+            description: "Kenya National Museum in Nairobi showcases artifacts, wildlife, and natural history.",
+            images: [
+                "https://images.unsplash.com/photo-1478854355073-e2654c3a7408?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1000&auto=format&fit=crop&q=60"
+            ]
     }
-    
-    resultDiv.innerHTML = `<strong>You selected:</strong> ${place}`;
-}
+        "Nairobi National Park": {
+            description: "Nairobi National Park is one of Kenya's most visited parks with diverse wildlife.",
+            images: [
+                "https://images.unsplash.com/photo-1488681073095-39c5b6705f24?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1516426122078-8023e26e2ced?w=1000&auto=format&fit=crop&q=60"
+            ]
 
-function showAvailableInfo() {
-    const place = document.getElementById('placeSearch').value.trim();
-    const availableInfoDiv = document.getElementById('availableInfo');
+        "Diani Beach": {
+            description: "Diani Beach is a stunning coastal destination known for its white sand and water sports.",
+            images: [
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1495854482210-f5b7f9e0e76d?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1507371341519-86a013bb338d?w=1000&auto=format&fit=crop&q=60"
+            ]
     
-    if (!place) {
-        availableInfoDiv.innerHTML = '<p>Please enter or select a place from the list.</p>';
-        return;
+        "Lamu Island": {
+            description: "Lamu Island is a UNESCO World Heritage Site featuring Swahili culture and architecture.",
+            images: [
+                "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe3e?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1512207736139-757ea7b3eaeb?w=1000&auto=format&fit=crop&q=60"
+            ]
     }
-    
-    if (placeData[place]) {
-        const data = placeData[place];
+        "Mount Kenya": {
+            description: "Mount Kenya is Africa's second-highest mountain, popular for hiking and climbing.",
+            images: [
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=60&h1"
+            ]
         let imagesHTML = '';
-        
-        // Handle both single image and multiple images
-        if (data.images && Array.isArray(data.images)) {
+        "Aberdare Ranges": {
+            description: "Aberdare Ranges is a mountain range known for its scenic beauty and wildlife.",
+            images: [
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe3e?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1000&auto=format&fit=crop&q=60"
+            ]
             // Multiple images
-            imagesHTML = data.images.map(img => 
-                `<img src="${img}" alt="${place}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px; margin-bottom: 10px;">`
-            ).join('');
+        "Lake Naivasha": {
+            description: "Lake Naivasha is a freshwater lake known for its bird watching and water activities.",
+            images: [
+                "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1500516659405-41601c0d9c21?w=1000&auto=format&fit=crop&q=60"
+            ]
         } else if (data.image) {
-            // Single image
-            imagesHTML = `<img src="${data.image}" alt="${place}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px;">`;
-        }
+        "Mt Longonot": {
+            description: "Mt Longonot is a volcanic mountain offering hiking trails and panoramic views.",
+            images: [
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1000&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=60&h2"
+            ]
         
         availableInfoDiv.innerHTML = `
             <p><strong>${place}</strong></p>
@@ -52,7 +88,11 @@ function showAvailableInfo() {
 const placeData = {
     "Mombasa": {
         description: "Mombasa is a coastal city in Kenya known for its beautiful beaches and rich history.",
-        image: "https://plus.unsplash.com/premium_photo-1697729911993-626a3e2c44eb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW9tYmFzYXxlbnwwfHwwfHx8MA%3D%3D"
+        images: [
+            "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1000&auto=format&fit=crop&q=60",
+            "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1000&auto=format&fit=crop&q=60",
+            "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=1000&auto=format&fit=crop&q=60"
+        ]
     },
     "Kisumu": {
         description: "Kisumu is a lakeside city on Lake Victoria, known for its fishing and wildlife.",
