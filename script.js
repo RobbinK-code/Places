@@ -1,12 +1,28 @@
 function showPlace() {
-    const place = document.getElementById('Places').value;
+    const place = document.getElementById('placeSearch').value.trim();
     const resultDiv = document.getElementById('result');
+    
+    if (!place) {
+        resultDiv.innerHTML = '<p>Please enter or select a place from the list.</p>';
+        return;
+    }
+    
+    if (!placeData[place]) {
+        resultDiv.innerHTML = '<p style="color: red;">"' + place + '" is not listed in our database. Please select from the available options.</p>';
+        return;
+    }
+    
     resultDiv.innerHTML = `<strong>You selected:</strong> ${place}`;
 }
 
 function showAvailableInfo() {
-    const place = document.getElementById('Places').value;
+    const place = document.getElementById('placeSearch').value.trim();
     const availableInfoDiv = document.getElementById('availableInfo');
+    
+    if (!place) {
+        availableInfoDiv.innerHTML = '<p>Please enter or select a place from the list.</p>';
+        return;
+    }
     
     if (placeData[place]) {
         const data = placeData[place];

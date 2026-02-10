@@ -10,20 +10,21 @@
     <div class="container">
         <h1>Robbin's Places I've Been</h1>
         <p>These are all the places I've been to in the world. Select a place in the dropdown below to see where I've been!</p>
-        <label for="Places">Select a place:</label>
-        <select id="Places">
-            <option value="Mombasa">Mombasa</option>
-            <option value="Kisumu">Kisumu</option>
-            <option value="Maasai Mara">Maasai Mara</option>
-            <option value="Kenya National Museum">Kenya National Museum</option>
-            <option value="Nairobi National Park">Nairobi National Park</option>
-            <option value="Diani Beach">Diani Beach</option>
-            <option value="Lamu Island">Lamu Island</option>
-            <option value="Mount Kenya">Mount Kenya</option>
-            <option value="Aberdare Ranges">Aberdare Ranges</option>
-            <option value="Lake Naivasha">Lake Naivasha</option>
-            <option value="Mt Longonot">Mt Longonot</option>
-        </select>
+        <label for="placeSearch">Search for a place:</label>
+        <input type="text" id="placeSearch" placeholder="Type to search..." list="placeList" autocomplete="off">
+        <datalist id="placeList">
+            <option value="Mombasa"></option>
+            <option value="Kisumu"></option>
+            <option value="Maasai Mara"></option>
+            <option value="Kenya National Museum"></option>
+            <option value="Nairobi National Park"></option>
+            <option value="Diani Beach"></option>
+            <option value="Lamu Island"></option>
+            <option value="Mount Kenya"></option>
+            <option value="Aberdare Ranges"></option>
+            <option value="Lake Naivasha"></option>
+            <option value="Mt Longonot"></option>
+        </datalist>
         <button onclick="showPlace()">Show Place</button>
         <div id="result" class="result"></div>
     </div>

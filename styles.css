@@ -57,6 +57,14 @@ html {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+.container input[type="text"] {
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+    font-size: 14px;
+}
 .container button {
     padding: 10px 20px;
     margin-top: 20px;
