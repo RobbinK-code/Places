@@ -10,10 +10,23 @@ function showAvailableInfo() {
     
     if (placeData[place]) {
         const data = placeData[place];
+        let imagesHTML = '';
+        
+        // Handle both single image and multiple images
+        if (data.images && Array.isArray(data.images)) {
+            // Multiple images
+            imagesHTML = data.images.map(img => 
+                `<img src="${img}" alt="${place}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px; margin-bottom: 10px;">`
+            ).join('');
+        } else if (data.image) {
+            // Single image
+            imagesHTML = `<img src="${data.image}" alt="${place}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px;">`;
+        }
+        
         availableInfoDiv.innerHTML = `
             <p><strong>${place}</strong></p>
             <p>${data.description}</p>
-            <img src="${data.image}" alt="${place}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px;">
+            ${imagesHTML}
         `;
     } else {
         availableInfoDiv.innerHTML = `<p>No information available for ${place}</p>`;
@@ -31,9 +44,11 @@ const placeData = {
     },
     "Maasai Mara": {
         description: "Maasai Mara is a national wildlife reserve famous for its abundant wildlife and safari experiences.",
-        image: "https://images.unsplash.com/photo-1518459384564-ecfd8e80721f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFhc2FpJTIwbWFyYXxlbnwwfHwwfHx8MA%3D%3D"
-        image: "https://images.unsplash.com/photo-1543107484-b13a21b26e8c?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFhc2FpJTIwbWFyYXxlbnwwfHwwfHx8MA%3D%3D"
-        image: "https://images.unsplash.com/photo-1554990772-0bea55d510d5?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFhc2FpJTIwbWFyYXxlbnwwfHwwfHx8MA%3D%3D"
+        images: [
+            "https://images.unsplash.com/photo-1518459384564-ecfd8e80721f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFhc2FpJTIwbWFyYXxlbnwwfHwwfHx8MA%3D%3D",
+            "https://images.unsplash.com/photo-1543107484-b13a21b26e8c?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFhc2FpJTIwbWFyYXxlbnwwfHwwfHx8MA%3D%3D",
+            "https://images.unsplash.com/photo-1554990772-0bea55d510d5?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFhc2FpJTIwbWFyYXxlbnwwfHwwfHx8MA%3D%3D"
+        ]
     },
     "Kenya National Museum": {
         description: "Kenya National Museum in Nairobi showcases artifacts, wildlife, and natural history.",
