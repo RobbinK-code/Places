@@ -1,0 +1,45 @@
+/* Styles for Robbin's Places You've Been */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: purple;
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+h1 {
+    color: #333;
+    text-align: center;
+}
+.places-list {
+    list-style-type: none;
+    padding: 0;
+}
+.places-list li {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.places-list li:hover {
+    background-color: #e0e0e0;
+}
+.container {
+    background: var(--glass);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    width: 300px;
+    background-color: beige;
+}
+html {
+    background-color: purple;
+}
