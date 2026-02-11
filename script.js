@@ -1,46 +1,56 @@
+function findPlaceKey(place) {
+    if (!place) return null;
+    const lower = place.toLowerCase();
+    for (const key in placeData) {
+        if (key.toLowerCase() === lower) return key;
+    }
+    return null;
+}
+
 function showPlace() {
-    const place = document.getElementById('placeSearch').value.trim();
+    const placeInput = document.getElementById('placeSearch');
+    const place = placeInput.value.trim();
     const resultDiv = document.getElementById('result');
-    
+
     if (!place) {
         resultDiv.innerHTML = '<p>Please enter or select a place from the list.</p>';
         return;
     }
-    
-    if (!placeData[place]) {
+
+    const matchKey = findPlaceKey(place);
+    if (!matchKey) {
         resultDiv.innerHTML = '<p style="color: red;">"' + place + '" is not listed in our database. Please select from the available options.</p>';
         return;
     }
-    
-    resultDiv.innerHTML = `<strong>You selected:</strong> ${place}`;
+
+    resultDiv.innerHTML = `<strong>You selected:</strong> ${matchKey}`;
 }
 
 function showAvailableInfo() {
-    const place = document.getElementById('placeSearch').value.trim();
+    const placeInput = document.getElementById('placeSearch');
+    const place = placeInput.value.trim();
     const availableInfoDiv = document.getElementById('availableInfo');
-    
+
     if (!place) {
         availableInfoDiv.innerHTML = '<p>Please enter or select a place from the list.</p>';
         return;
     }
-    
-    if (placeData[place]) {
-        const data = placeData[place];
+
+    const matchKey = findPlaceKey(place);
+    if (matchKey) {
+        const data = placeData[matchKey];
         let imagesHTML = '';
-        
-        // Handle both single image and multiple images
+
         if (data.images && Array.isArray(data.images)) {
-            // Multiple images
-            imagesHTML = data.images.map(img => 
-                `<img src="${img}" alt="${place}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px; margin-bottom: 10px;">`
+            imagesHTML = data.images.map(img =>
+                `<img src="${img}" alt="${matchKey}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px; margin-bottom: 10px;">`
             ).join('');
         } else if (data.image) {
-            // Single image
-            imagesHTML = `<img src="${data.image}" alt="${place}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px;">`;
+            imagesHTML = `<img src="${data.image}" alt="${matchKey}" class="place-image" style="width: 100%; max-width: 300px; border-radius: 5px; margin-top: 10px;">`;
         }
-        
+
         availableInfoDiv.innerHTML = `
-            <p><strong>${place}</strong></p>
+            <p><strong>${matchKey}</strong></p>
             <p>${data.description}</p>
             ${imagesHTML}
         `;
@@ -139,6 +149,13 @@ const placeData = {
         ]
     }
 };
+
+
+// Auto-update the displayed selection as the user types (case-insensitive)
+const placeInputEl = document.getElementById('placeSearch');
+if (placeInputEl) {
+    placeInputEl.addEventListener('input', showPlace);
+}
 
 
 
